@@ -1,5 +1,5 @@
 'use client';
-import TextInput from '@/app/[locale]/components/text-input.component';
+import TextInput from '@/app/components/text-input.component';
 import Image from 'next/image';
 import { ChangeEvent, useState } from 'react';
 import Button from '../components/custom-button.component';
@@ -36,7 +36,6 @@ export default function Contact() {
 			await axios.post('http://localhost:4000/api/prospects', payload);
 		} catch (error) {
 			alert(error);
-			
 		}
 	};
 

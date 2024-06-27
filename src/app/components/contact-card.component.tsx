@@ -1,11 +1,10 @@
 'use client';
 import React from 'react';
 import Button from './custom-button.component';
-import { useLocale } from 'next-intl';
 import Link from 'next/link';
 
 export const ContactCard = () => {
-	const locale = useLocale();
+
 	return (
 		<section className='h- mx-auto mt-10 flex flex-col rounded-3xl bg-logo p-12 text-white md:w-3/4 md:flex-row'>
 			<div className='flex w-full flex-col gap-2 md:w-2/3'>
@@ -19,7 +18,7 @@ export const ContactCard = () => {
 				</p>
 			</div>
 			<div className='mt-6 flex h-full w-full flex-col items-center gap-2 md:mt-0 md:w-1/2 md:items-end md:justify-end'>
-				<Link href={`/${locale}/contact`} passHref>
+				<Link href={'/contact'} passHref>
 					<Button
 						label='Contactanos!'
 						id='contact-btn'
