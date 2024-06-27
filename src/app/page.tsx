@@ -1,5 +1,4 @@
-
-import { ContactCard } from '@/app/[locale]/components/contact-card.component';
+import { ContactCard } from '@/app/components/contact-card.component';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import { Header } from './components/header.component';

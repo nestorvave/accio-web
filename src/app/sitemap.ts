@@ -2,28 +2,34 @@ import { MetadataRoute } from 'next';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || '';
-	const pathEs = '/es';
 
-	return [
+	const urls = [
 		{
-			url: `${baseUrl}${pathEs}`,
+			url: `${baseUrl}`,
 			lastModified: new Date(),
+			priority: 1,
 		},
 		{
-			url: `${baseUrl}${pathEs}/about-us`,
+			url: `${baseUrl}/about-us`,
 			lastModified: new Date(),
+			priority: 0.8,
 		},
 		{
-			url: `${baseUrl}${pathEs}/solutions`,
+			url: `${baseUrl}/solutions`,
 			lastModified: new Date(),
+			priority: 0.9,
 		},
 		{
-			url: `${baseUrl}${pathEs}/careers`,
+			url: `${baseUrl}/careers`,
 			lastModified: new Date(),
+			priority: 0.3,
 		},
 		{
-			url: `${baseUrl}${pathEs}/contact`,
+			url: `${baseUrl}/contact`,
 			lastModified: new Date(),
+			priority: 0.7,
 		},
 	];
+
+	return urls;
 }

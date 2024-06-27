@@ -6,7 +6,6 @@ import { useLocale } from 'next-intl';
 
 export const Navbar = () => {
 	const [open, setOpen] = useState(false);
-	const locale = useLocale();
 
 	const menu = [
 		{ label: 'Nosotros', link: '/about-us' },
@@ -63,7 +62,7 @@ export const Navbar = () => {
 								<Link
 									locale={false}
 									onClick={() => setOpen(false)}
-									href={`/${locale}/${link}`}
+									href={link}
 									className='active:bd-blue-600 block rounded border-gray-700 px-3 py-2 text-white hover:bg-gray-100 md:p-0 md:hover:bg-transparent md:hover:text-blue-500'
 								>
 									{label}
