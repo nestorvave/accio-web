@@ -33,7 +33,7 @@ export default function Contact() {
 
 	const post = async () => {
 		try {
-			await axios.post('http://localhost:4000/api/prospects', payload);
+			await axios.post(`${process.env.BASE_API_URL}/api/prospects`, payload);
 		} catch (error) {
 			alert(error);
 		}
