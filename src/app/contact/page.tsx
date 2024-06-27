@@ -33,7 +33,7 @@ export default function Contact() {
 
 	const post = async () => {
 		try {
-			await axios.post(`${process.env.BASE_API_URL}/api/prospects`, payload);
+			await axios.post('https://backend-accio-f8734961cba8.herokuapp.com/api/prospects', payload);
 		} catch (error) {
 			alert(error);
 		}
