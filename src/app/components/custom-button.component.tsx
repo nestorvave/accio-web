@@ -3,7 +3,7 @@ export interface IButton {
 	label: string;
 	variant?: 'main' | 'white';
 	icon?: React.ReactNode;
-	onClick: () => void;
+	onClick?: () => void;
 	customStyles?: string;
 	id: string;
 	disabled?: boolean;

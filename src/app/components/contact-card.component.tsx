@@ -4,7 +4,6 @@ import Button from './custom-button.component';
 import Link from 'next/link';
 
 export const ContactCard = () => {
-
 	return (
 		<section className='h- mx-auto mt-10 flex flex-col rounded-3xl bg-logo p-12 text-white md:w-3/4 md:flex-row'>
 			<div className='flex w-full flex-col gap-2 md:w-2/3'>
@@ -23,7 +22,6 @@ export const ContactCard = () => {
 						label='Contactanos!'
 						id='contact-btn'
 						variant='white'
-						onClick={() => {}}
 					/>
 				</Link>
 			</div>

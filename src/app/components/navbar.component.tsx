@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { Logo } from './logo.component';
 import { useState } from 'react';
-import { useLocale } from 'next-intl';
+
 
 export const Navbar = () => {
 	const [open, setOpen] = useState(false);
