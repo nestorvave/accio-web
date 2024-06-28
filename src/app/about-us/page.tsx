@@ -8,7 +8,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
 	title: 'Nosotros',
 	description:
-		'Descubre quiénes somos en Accio. Somos una empresa comprometida con la innovación en el desarrollo de software, enfocados en calidad, confianza y satisfacción del cliente.',
+		'Descubre quiénes somos en Accio. Somos una empresa y consultora de software comprometida con la innovación en el desarrollo de software, enfocados en calidad, confianza y satisfacción del cliente.',
 };
 
 

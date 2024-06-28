@@ -6,7 +6,7 @@ import { IoCheckmarkCircleSharp } from 'react-icons/io5';
 export const metadata: Metadata = {
 	title: 'Carreras',
 	description:
-		'Explora las oportunidades laborales en Accio. Somos líderes en el desarrollo de software, ofreciendo roles desafiantes para profesionales de IT y más.',
+		'Explora las oportunidades laborales en Accio tu empresa y consultora de software. Somos líderes en el desarrollo de software, ofreciendo roles desafiantes para profesionales de IT y más.',
 };
 
 
