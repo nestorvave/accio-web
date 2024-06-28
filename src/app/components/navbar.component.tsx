@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { Logo } from './logo.component';
 import { useState } from 'react';
-
+import Button from './custom-button.component';
 
 export const Navbar = () => {
 	const [open, setOpen] = useState(false);
@@ -21,15 +21,12 @@ export const Navbar = () => {
 					<Logo width='40%' />
 				</Link>
 
-				<div className='flex w-1/2 items-center justify-end space-x-1 md:order-2 md:w-auto md:space-x-0 rtl:space-x-reverse'>
-					<button
-						type='button'
-						data-dropdown-toggle='language-dropdown-menu'
-						className='hidden cursor-pointer items-center justify-center rounded-lg px-4 py-2 text-sm font-medium text-white hover:bg-gray-700'
-					>
-						English (US)
-					</button>
-
+				<section className='flex w-1/2 items-center justify-end space-x-1 md:order-2 md:w-auto md:space-x-0 rtl:space-x-reverse'>
+					<div className='hidden md:block'>
+						<Link href={'/contact'} className='w-1/2 md:w-1/3'>
+							<Button label='Contactanos' id='contact-btn' variant='main' />
+						</Link>
+					</div>
 					<button
 						onClick={() => setOpen(!open)}
 						type='button'
@@ -51,7 +48,7 @@ export const Navbar = () => {
 							/>
 						</svg>
 					</button>
-				</div>
+				</section>
 				<div
 					className={` ${!open && 'hidden'} w-full items-center justify-between md:order-1 md:flex md:w-auto`}
 					id='navbar-language'

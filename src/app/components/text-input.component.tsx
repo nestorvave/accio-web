@@ -6,18 +6,15 @@ export interface ITextInput {
 	id: string;
 	isRequired?: boolean;
 	label?: string;
-	maxLength?: number;
-	minLength?: number;
 	name: string;
 	onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 	placeholder?: string;
 	readOnly?: boolean;
-	type: 'text' | 'textarea';
+	type: 'text' | 'textarea'; 
 	value: string;
 	disabled?: boolean;
-
+	rows?: number; 
 }
-
 const TextInput = (props: ITextInput) => {
 	const {
 		ariaLabel,
@@ -26,8 +23,6 @@ const TextInput = (props: ITextInput) => {
 		id,
 		isRequired,
 		label,
-		maxLength,
-		minLength,
 		name,
 		onChange,
 		placeholder,
@@ -35,11 +30,11 @@ const TextInput = (props: ITextInput) => {
 		type = 'text',
 		value,
 		disabled = false,
-		
+		rows = 4, 
 	} = props;
 
-	const inputclass = `${className && className} p-2 px-3  mt-[10px] block resize-none  
-	w-full  text-base text-main focus:outline-none shadow-inputDefault focus:shadow-input bg-softBlue `;
+	const inputClass = `${className && className} p-2 px-3 mt-[10px] block resize-none  
+    w-full text-base text-main focus:outline-none shadow-inputDefault focus:shadow-input bg-softBlue`;
 
 	return (
 		<div className='w-full'>
@@ -53,27 +48,43 @@ const TextInput = (props: ITextInput) => {
 				</label>
 			)}
 			<div>
-				<input
-					type={type}
-					id={id}
-					className={`${inputclass}`}
-					placeholder={placeholder}
-					required
-					name={name}
-					onChange={onChange}
-					value={value}
-					aria-label={ariaLabel}
-					maxLength={maxLength || 100}
-					minLength={minLength}
-					readOnly={readOnly}
-					autoFocus={autoFocus}
-					style={{ outline: 'none' }}
-					disabled={disabled}
-				
-				/>
+				{type === 'textarea' ? (
+					<textarea
+						id={id}
+						className={inputClass}
+						placeholder={placeholder}
+						required={isRequired}
+						name={name}
+						onChange={onChange}
+						value={value}
+						aria-label={ariaLabel}
+						readOnly={readOnly}
+						autoFocus={autoFocus}
+						style={{ outline: 'none' }}
+						disabled={disabled}
+						rows={rows} // Establecer el número de filas
+					/>
+				) : (
+					<input
+						type={type}
+						id={id}
+						className={inputClass}
+						placeholder={placeholder}
+						required={isRequired}
+						name={name}
+						onChange={onChange}
+						value={value}
+						aria-label={ariaLabel}
+						readOnly={readOnly}
+						autoFocus={autoFocus}
+						style={{ outline: 'none' }}
+						disabled={disabled}
+					/>
+				)}
 			</div>
 		</div>
 	);
 };
 
 export default TextInput;
+
