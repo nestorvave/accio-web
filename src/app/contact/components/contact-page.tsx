@@ -85,7 +85,9 @@ export const ContactPage = () => {
 							id='send-btn'
 							onClick={post}
 							variant='main'
-						/* 	disabled={!description || !name || !phone || !name} */
+							disabled={
+								!description || !name || !phone || !name || !service
+							}
 						/>
 					</div>
 				</div>
