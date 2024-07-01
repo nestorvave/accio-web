@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { Navbar } from '@/app/components/navbar.component';
 import { Footer } from '@/app/components/footer.component';
+import Head from 'next/head';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -36,6 +37,9 @@ export default async function RootLayout({
 }>) {
 	return (
 		<html lang={'es'}>
+			<Head>
+				<link rel='canonical' href='https://accio.cloud' />
+			</Head>
 			<body className={inter.className}>
 				<Navbar />
 				<main className='min-h-[60vh] px-12 md:px-32'>{children}</main>
