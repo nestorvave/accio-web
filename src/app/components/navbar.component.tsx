@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Logo } from './logo.component';
 import { useState } from 'react';
 import Button from './custom-button.component';
+import Image from 'next/image';
 
 export const Navbar = () => {
 	const [open, setOpen] = useState(false);
@@ -18,7 +19,7 @@ export const Navbar = () => {
 		<nav className='sticky top-0 z-50 border-gray-200 bg-gray-900'>
 			<div className='mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4'>
 				<Link href={'/'} className='w-1/2 md:w-auto'>
-					<Logo width='40%' />
+					<Image src={'/logo.png'} alt='logo'  width={170} height={0} />
 				</Link>
 
 				<section className='flex w-1/2 items-center justify-end space-x-1 md:order-2 md:w-auto md:space-x-0 rtl:space-x-reverse'>
