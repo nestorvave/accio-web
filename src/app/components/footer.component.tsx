@@ -43,7 +43,7 @@ export const Footer = () => {
 							<ul className='font-medium text-gray-400'>
 								<li className='mb-4'>
 									<a
-										href='https://www.instagram.com/accio.inc/'
+										href='https://www.instagram.com/accio.hub/'
 										className='hover:underline'
 									>
 										Instagram
