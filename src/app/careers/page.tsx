@@ -9,7 +9,6 @@ export const metadata: Metadata = {
 		'Explora las oportunidades laborales en Accio tu empresa y consultora de software. Somos líderes en el desarrollo de software, ofreciendo roles desafiantes para profesionales de IT y más.',
 };
 
-
 export default function Careers() {
 	const benefits = [
 		'Trabajo remoto',
@@ -20,8 +19,7 @@ export default function Careers() {
 
 	return (
 		<>
-			{' '}
-			<h2 className='mt-10 text-center text-logo'>CARRERAS</h2>
+			<h1 className='mt-10 text-center text-logo'>CARRERAS</h1>
 			<section className='flex w-full'>
 				<div className='mx-auto mt-6 flex flex-col gap-1 md:w-1/2'>
 					<h3 className='text-center text-4xl font-bold text-main'>

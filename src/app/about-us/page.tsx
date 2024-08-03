@@ -55,7 +55,7 @@ export default function AboutUs() {
 
 	return (
 		<>
-			<h2 className='mt-10 text-center text-logo'>NOSOTROS</h2>
+			<h1 className='mt-10 text-center text-logo'>NOSOTROS</h1>
 			<section className='flex w-full flex-col md:flex-row'>
 				<div className='mt-6 flex md:w-1/2 flex-col gap-1'>
 					<h3 className='text-center text-4xl font-bold text-main'>MISIÓN</h3>

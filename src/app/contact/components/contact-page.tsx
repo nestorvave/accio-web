@@ -28,7 +28,7 @@ export const ContactPage = () => {
 				setShow={setShowSnackbar}
 				msg={msgSnackbar}
 			/>
-			<h2 className='mt-10 text-center text-logo'>CONTÁCTANOS</h2>
+			<h1 className='mt-10 text-center text-logo'>CONTÁCTANOS</h1>
 			<section className='flex w-full flex-col md:flex-row'>
 				<div className='order-2 mt-6 flex flex-col gap-1 md:w-1/2'>
 					<h3 className='text-center text-4xl font-bold text-main'>

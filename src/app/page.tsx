@@ -15,7 +15,7 @@ export default function Home() {
 			<Header />
 			<section className='flex w-full justify-center' id='servicios'>
 				<div className='flex flex-col justify-center gap-1'>
-					<h2 className='text-center text-logo'>SERVICIOS</h2>
+					<h1 className='text-center text-logo'>SERVICIOS</h1>
 					<h3 className='text-center text-4xl font-bold text-main'>
 						Lo que podemos hacer por ti
 					</h3>
