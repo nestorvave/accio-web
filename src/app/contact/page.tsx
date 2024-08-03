@@ -1,4 +1,3 @@
-import { useContact } from './hooks/useContact';
 import { Metadata } from 'next';
 import { ContactPage } from './components/contact-page';
 
