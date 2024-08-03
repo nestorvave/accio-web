@@ -13,7 +13,7 @@ export const ContactCard = () => {
 				</h2>
 				<p className='font-thin'>
 					¡Comparte tus metas con nosotros y diseñaremos un software
-					personalizado que las haga realidad.!
+					personalizado que las haga realidad!
 				</p>
 			</div>
 			<div className='mt-6 flex h-full w-full flex-col items-center gap-2 md:mt-0 md:w-1/2 md:items-end md:justify-end'>
