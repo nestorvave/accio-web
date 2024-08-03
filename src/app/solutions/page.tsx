@@ -55,7 +55,7 @@ export default function Solutions() {
 			{solutions.map(({ title, description, image }, index) => (
 				<section
 					key={index}
-					className={`mx-auto mt-12 flex w-full flex-col justify-between border md:w-9/12 md:flex-row ${index % 2 === 0 ? '' : 'md:flex-row-reverse'}`}
+					className={`mx-auto mt-12 flex w-full flex-col justify-between md:w-9/12 md:flex-row ${index % 2 === 0 ? '' : 'md:flex-row-reverse'}`}
 				>
 					<div className='mt-6 flex flex-col gap-1 text-center md:w-1/2 md:text-left'>
 						<h3 className='text-4xl font-bold text-main'>{title}</h3>
