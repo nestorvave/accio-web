@@ -1,3 +1,9 @@
 RewriteEngine On
-RewriteCond %{HTTP_HOST} ^accio\.mx$ [NC]
-RewriteRule ^(.*)$ http://www.accio.mx/$1 [R=301,L]
+RewriteRule ^([^/]+)/$ https://accio.mx/$1.html [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^/]+)/$ https://accio.mx/$1.html [L]
+RewriteRule ^([^/]+)/([^/]+)/$ https://accio.mx/$1/$2.html [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !(\.[a-zA-Z0-9]{1,5}|/)$
+RewriteRule (.*)$ https://accio.mx/$1/ [R=301,L]
