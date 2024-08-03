@@ -27,7 +27,7 @@ export default function Careers() {
 					</h3>
 				</div>
 			</section>
-			<section className='mx-auto mt-12 flex w-full flex-col justify-between border md:w-9/12 md:flex-row'>
+			<section className='mx-auto mt-12 flex w-full flex-col justify-between md:w-9/12 md:flex-row'>
 				<div className='mt-6 flex flex-col gap-1 text-center md:w-1/2 md:text-left'>
 					<h3 className='text-4xl font-bold text-main'>
 						Beneficios de trabajar con nosotros
