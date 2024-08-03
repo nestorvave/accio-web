@@ -12,7 +12,7 @@ export const Footer = () => {
 							<Image src={'/logo.png'} alt='logo' width={300} height={0} />
 						</Link>
 					</div>
-					<div className='grid grid-cols-2 gap-8 sm:gap-6'>
+					<div className='flex gap-8 sm:gap-6 md:grid md:grid-cols-2'>
 						<div>
 							<h2 className='mb-6 text-sm font-semibold uppercase text-white'>
 								Contacto
@@ -20,15 +20,15 @@ export const Footer = () => {
 							<ul className='font-medium text-gray-400'>
 								<li className='mb-4'>
 									<a
-										href='accio.ti.services@gmail.com'
-										className='hover:underline'
+										href='mailto:accio.ti.solutions@gmail.com'
+										className='break-words hover:underline'
 									>
-										accio.ti.services@gmail.com
+										accio.ti.solutions@gmail.com
 									</a>
 								</li>
 								<li>
 									<a
-										href='https://tailwindcss.com/'
+										href='tel:+527773635639'
 										className='hover:underline'
 									>
 										+52-(777)-363-56-39
@@ -65,8 +65,8 @@ export const Footer = () => {
 				<div className='sm:flex sm:items-center sm:justify-between'>
 					<span className='text-sm text-gray-400 sm:text-center'>
 						© 2024{' '}
-						<a href='https://flowbite.com/' className='hover:underline'>
-							Accio.inc™
+						<a href='https://www.accio.mx/' className='hover:underline'>
+							Accio.mx™
 						</a>
 						. All Rights Reserved.
 					</span>
