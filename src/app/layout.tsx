@@ -38,7 +38,7 @@ export default async function RootLayout({
 	return (
 		<html lang={'es'}>
 			<Head>
-				<link rel='canonical' href='https://accio.cloud' />
+				<link rel='canonical' href='https://accio.mx' />
 			</Head>
 			<body className={inter.className}>
 				<Navbar />
