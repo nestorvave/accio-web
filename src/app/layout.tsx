@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 			'En Accio somos una empresa de software y consultora especializada en proyectos TI. Desarrollamos soluciones web a la medida y móviles personalizadas para mejorar la eficiencia operativa y la experiencia del usuario.',
 		type: 'website',
 		locale: 'es_ES',
-		url: 'https://accio.cloud',
+		url: 'https://accio.mx',
 		siteName:
 			'Accio empresa de software | Consultora de software | Soluciones tecnológicas',
 	},
