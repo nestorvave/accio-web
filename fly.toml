@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for accio-web-snowy-sound-2742 on 2024-08-13T14:20:49-06:00
+# fly.toml app configuration file generated for accio-web on 2024-08-13T14:20:49-06:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'accio-web-snowy-sound-2742'
+app = 'accio-web'
 primary_region = 'qro'
 
 [build]

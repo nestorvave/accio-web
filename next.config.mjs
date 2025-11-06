@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+	output: 'export', // <-- Agregado para export estático
 	redirects: async () => {
 		return [
 			{
@@ -11,4 +12,5 @@ const nextConfig = {
 		];
 	},
 };
+
 export default nextConfig;
