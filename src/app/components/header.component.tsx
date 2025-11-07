@@ -6,47 +6,63 @@ import { HiOutlineSparkles } from 'react-icons/hi2';
 export const Header = () => {
 	return (
 		<section className='mb-8 mt-6 flex w-[100%] flex-col-reverse items-center justify-center md:mt-12 md:flex-row md:justify-between'>
-			<section className='mt-12 flex w-full flex-col gap-8 p-6 text-center md:p-0 lg:text-left xl:w-5/12'>
-				<div className='inline-flex w-fit items-center gap-2 rounded-full bg-main/10 px-4 py-2'>
+			<section className='mt-12 flex w-full flex-col gap-6 p-4 text-center sm:p-6 md:p-0 lg:text-left xl:w-5/12'>
+				{/* Badge */}
+				<div className='inline-flex w-fit items-center gap-2 rounded-full bg-main/10 px-3 py-1 sm:px-4 sm:py-2'>
 					<HiOutlineSparkles className='h-4 w-4 text-main' />
-					<span className='text-sm font-semibold text-main'>
+					<span className='text-xs font-semibold text-main sm:text-sm'>
 						Soluciones Digitales Innovadoras
 					</span>
 				</div>
-				<h1 className='w-full text-5xl font-bold leading-tight text-black md:text-6xl lg:text-7xl'>
+
+				{/* Heading */}
+				<h1 className='w-full text-3xl font-bold leading-tight text-black sm:text-4xl md:text-6xl lg:text-7xl'>
 					Transformamos <span className='text-main'>Ideas</span> en Código
 				</h1>
-				<p className='w-full text-lg text-black/70 md:max-w-xl md:text-xl'>
+
+				{/* Paragraph */}
+				<p className='w-full text-sm text-black/70 sm:text-base md:max-w-xl md:text-xl'>
 					Soluciones web, mobile y software a medida diseñadas para llevar tu
 					negocio al siguiente nivel
 				</p>
-				<div className='flex w-full items-center justify-center gap-4 lg:items-start lg:justify-start'>
-					<div className='w-5/12 lg:w-5/12'>
+
+				{/* Buttons */}
+				<div className='flex w-full flex-col items-center justify-center gap-4 sm:flex-row lg:items-start lg:justify-start'>
+					<div className='w-full sm:w-5/12'>
 						<Button
 							label='Comenzar Proyecto!'
 							id='contact-btn'
 							variant='main'
 						/>
 					</div>
-					<div className='w-5/12 lg:w-4/12'>
+					<div className='w-full sm:w-5/12'>
 						<Button label='Ver servicios' id='services-btn' variant='main' />
 					</div>
 				</div>
-				<div className='border-border flex flex-wrap gap-8 border-t pt-8'>
-					<div>
-						<p className='text-3xl font-bold text-main'>20+</p>
-						<p className='text-sm text-black/60'>Proyectos Completados</p>
+
+				{/* Stats */}
+				<div className='border-border flex flex-col flex-wrap justify-center gap-6 border-t pt-6 sm:flex-row sm:gap-8 sm:pt-8 lg:justify-start'>
+					<div className='text-center sm:text-left'>
+						<p className='text-2xl font-bold text-main sm:text-3xl'>20+</p>
+						<p className='text-xs text-black/60 sm:text-sm'>
+							Proyectos Completados
+						</p>
 					</div>
-					<div>
-						<p className='text-3xl font-bold text-main'>100%</p>
-						<p className='text-sm text-black/60'>Satisfacción Clientes</p>
+					<div className='text-center sm:text-left'>
+						<p className='text-2xl font-bold text-main sm:text-3xl'>100%</p>
+						<p className='text-xs text-black/60 sm:text-sm'>
+							Satisfacción Clientes
+						</p>
 					</div>
-					<div>
-						<p className='text-3xl font-bold text-main'>3+</p>
-						<p className='text-sm text-black/60'>Años Experiencia</p>
+					<div className='text-center sm:text-left'>
+						<p className='text-2xl font-bold text-main sm:text-3xl'>3+</p>
+						<p className='text-xs text-black/60 sm:text-sm'>
+							Años Experiencia
+						</p>
 					</div>
 				</div>
 			</section>
+
 			<section className='relative mt-12 hidden h-[480px] items-center justify-center rounded-xl bg-[#D9E6FC] md:w-5/12 lg:flex'>
 				<div className='from-primary/20 to-secondary/20 absolute inset-0 rounded-3xl bg-gradient-to-br' />
 				<div className='relative z-10 space-y-4 rounded-2xl bg-white/50 p-8 shadow-2xl backdrop-blur'>

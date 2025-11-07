@@ -14,7 +14,7 @@ export const Navbar = () => {
 	];
 
 	return (
-		<nav className='sticky top-0 z-50 border-gray-200 bg-gray-900'>
+		<nav className='sticky w-full top-0 z-50 border-gray-200 bg-gray-900'>
 			<div className='mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4'>
 				<Link href={'/'} className='w-1/2 md:w-auto'>
 					<Image src={'/logo.png'} alt='logo'  width={170} height={0} />
