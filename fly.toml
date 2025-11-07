@@ -4,7 +4,7 @@
 #
 
 app = 'accio-web-snowy-sound-2742'
-primary_region = 'qro'
+primary_region = 'dfw'
 
 [build]
 

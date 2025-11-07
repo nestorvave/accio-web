@@ -11,7 +11,6 @@ export const Navbar = () => {
 		{ label: 'Nosotros', link: '/about-us' },
 		{ label: 'Contacto', link: '/contact' },
 		{ label: 'Soluciones', link: '/solutions' },
-		{ label: 'Carreras', link: '/careers' },
 	];
 
 	return (
@@ -24,7 +23,7 @@ export const Navbar = () => {
 				<section className='flex w-1/2 items-center justify-end space-x-1 md:order-2 md:w-auto md:space-x-0 rtl:space-x-reverse'>
 					<div className='hidden md:block'>
 						<Link href={'/contact'} className='w-1/2 md:w-1/3'>
-							<Button label='Contactanos' id='contact-btn' variant='main' />
+							<Button label='Solicitar Consulta' id='contact-btn' variant='main' />
 						</Link>
 					</div>
 					<button

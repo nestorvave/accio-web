@@ -2,16 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 * {
 	box-sizing: border-box;
 }
-
-
 
 @layer utilities {
 	.text-balance {
 		text-wrap: balance;
 	}
+}
+
+.gradient-text {
+	background: linear-gradient(to right, rgb(0, 128, 255), rgb(34, 142, 195));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	color: transparent;
+}
+.card-bg {
+	background: linear-gradient(to right, rgb(0, 128, 255), rgb(34, 142, 195));
+	color: white;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }

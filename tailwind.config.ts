@@ -11,7 +11,7 @@ const config: Config = {
 		extend: {
 			colors: {
 				logo: '#0092CA',
-				main: '#030448',
+				main: '#3499FE',
 			},
 			backgroundColor: {
 				softBlue: '#F3F7F8',

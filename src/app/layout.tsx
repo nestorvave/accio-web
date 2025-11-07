@@ -4,6 +4,7 @@ import './globals.css';
 import { Navbar } from '@/app/components/navbar.component';
 import { Footer } from '@/app/components/footer.component';
 import Head from 'next/head';
+import { ContactCard } from './components/contact-card.component';
 
 const inter = Poppins({ subsets: ['latin'], weight: ['500'] });
 
@@ -43,6 +44,7 @@ export default async function RootLayout({
 			<body className={inter.className}>
 				<Navbar />
 				<main className='min-h-[60vh] px-12 md:px-32'>{children}</main>
+				<ContactCard />
 				<Footer />
 			</body>
 		</html>
