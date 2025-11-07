@@ -19,7 +19,7 @@ export const useContact = () => {
 		name: '',
 		email: '',
 		description: '',
-		service: '',
+		service: 'mobile',
 		phone: '',
 	});
 
@@ -43,7 +43,8 @@ export const useContact = () => {
 		setPayload({ ...payload, [e.target.name]: e.target.value });
 	};
 
-	const post = async () => {
+	const post = async (event: React.FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
 		const { name, email, description, service, phone } = payload;
 		if (!service ) {
 			fnShowSnackbar('Porfavor elige el tipo de servicio que estas interesado.');

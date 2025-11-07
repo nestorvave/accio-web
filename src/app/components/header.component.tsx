@@ -83,12 +83,15 @@ export const Header = () => {
 					</div>
 				</div>
 
-				<div className='border-border absolute -right-8 top-12 animate-bounce rounded-xl border bg-white p-4 shadow-lg'>
+				<div
+					className='border-border animate-ease-in-out animate-duration-[30s] absolute -right-8 top-12 animate-float-slow rounded-xl border bg-white p-4 shadow-lg'
+					style={{ animationDelay: '.3s' }}
+				>
 					<p className='text-xs font-semibold text-main'>⚡ Rápido</p>
 				</div>
 				<div
-					className='border-border absolute -left-12 bottom-20 animate-bounce rounded-xl border bg-white p-4 shadow-lg'
-					style={{ animationDelay: '0.2s' }}
+					className='border-border animate-ease-in-out animate-duration-[30s] absolute -left-12 bottom-20 animate-float-slow rounded-xl border bg-white p-4 shadow-lg'
+					style={{ animationDelay: '.3s' }}
 				>
 					<p className='text-xs font-semibold text-main'>🎯 Preciso</p>
 				</div>

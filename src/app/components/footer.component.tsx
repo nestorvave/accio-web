@@ -38,7 +38,7 @@ export const Footer = () => {
 						</div>
 						<div>
 							<h2 className='mb-6 text-sm font-semibold uppercase text-white'>
-								Follow us
+								Síguenos
 							</h2>
 							<ul className='font-medium text-gray-400'>
 								<li className='mb-4'>
@@ -47,14 +47,6 @@ export const Footer = () => {
 										className='hover:underline'
 									>
 										Instagram
-									</a>
-								</li>
-								<li>
-									<a
-										href='https://discord.gg/4eeurUVvTy'
-										className='hover:underline'
-									>
-										Tiktok
 									</a>
 								</li>
 							</ul>
