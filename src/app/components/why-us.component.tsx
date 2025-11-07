@@ -41,7 +41,7 @@ export const WhyUs = () => {
 						</h2>
 
 						<p className='text-lg text-black/70'>
-							Con más de 8 años de experiencia, hemos ayudado a empresas de
+							Con más de 3 años de experiencia, hemos ayudado a empresas de
 							todos los tamaños a transformar sus ideas en soluciones
 							digitales exitosas.
 						</p>

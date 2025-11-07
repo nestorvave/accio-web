@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-	const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || '';
+	const baseUrl = 'https://accio.mx';
 
 	const urls = [
 		{
@@ -18,11 +18,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 			url: `${baseUrl}/solutions`,
 			lastModified: new Date(),
 			priority: 0.9,
-		},
-		{
-			url: `${baseUrl}/careers`,
-			lastModified: new Date(),
-			priority: 0.3,
 		},
 		{
 			url: `${baseUrl}/contact`,
