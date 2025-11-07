@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { useState } from 'react';
 
 const FAQItem = ({ q, a }: { q: string; a: string }) => {
@@ -43,7 +43,7 @@ export default function FAQ() {
 	];
 
 	return (
-		<div className='space-y-4 mt-16'>
+		<div className='mt-16 space-y-4'>
 			{faqs.map((faq, idx) => (
 				<FAQItem key={idx} {...faq} />
 			))}

@@ -1,9 +1,7 @@
 'use client';
 import React from 'react';
 import { useContact } from '../hooks/useContact';
-import TextInput from '@/app/components/text-input.component';
 import Button from '@/app/components/custom-button.component';
-import Image from 'next/image';
 import Snackbar from '@/app/components/snackbar.component';
 import { BiMailSend, BiMessage, BiPhone, BiPhoneCall, BiUser } from 'react-icons/bi';
 import { CgLock } from 'react-icons/cg';

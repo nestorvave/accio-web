@@ -1,5 +1,4 @@
 
-import { ContactCard } from '@/app/components/contact-card.component';
 import { Metadata } from 'next';
 import { Header } from './components/header.component';
 import { Services } from './components/services.component';
