@@ -1,10 +1,4 @@
-import { ContactCard } from '@/app/components/contact-card.component';
 import { Metadata } from 'next';
-import Image from 'next/image';
-import Link from 'next/link';
-import React from 'react';
-import Button from '../components/custom-button.component';
-import { BsArrowRight } from 'react-icons/bs';
 import { LuGlobe, LuSmartphone, LuLightbulb, LuUsers, LuRocket } from 'react-icons/lu';
 import { BiCheck } from 'react-icons/bi';
 import { FiZap } from 'react-icons/fi';

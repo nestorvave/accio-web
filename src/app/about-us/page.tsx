@@ -3,10 +3,7 @@ import React from 'react';
 import { Metadata } from 'next';
 import { FiTarget } from 'react-icons/fi';
 import { FaEye } from 'react-icons/fa';
-import { LuLightbulb } from 'react-icons/lu'; // Lightbulb
-import { LuTarget } from 'react-icons/lu'; // Target
-import { LuUsers } from 'react-icons/lu'; // Users
-import { LuHeart } from 'react-icons/lu'; // Heart
+import { LuLightbulb, LuTarget, LuUsers, LuHeart } from 'react-icons/lu'; 
 
 export const metadata: Metadata = {
 	title: 'Nosotros - Quiénes Somos | Accio',
