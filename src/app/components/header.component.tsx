@@ -61,18 +61,22 @@ export const Header = () => {
 					{/* Buttons */}
 					<div className='flex w-full flex-col items-center justify-center gap-4 sm:flex-row lg:items-start lg:justify-start'>
 						<div className='w-full sm:w-5/12'>
-							<Button
-								label='Comenzar Proyecto!'
-								id='contact-btn'
-								variant='main'
-							/>
+							<Link href='/contact'>
+								<Button
+									label='Comenzar Proyecto!'
+									id='contact-btn'
+									variant='main'
+								/>
+							</Link>
 						</div>
 						<div className='w-full sm:w-5/12'>
-							<Button
-								label='Ver servicios'
-								id='services-btn'
-								variant='main'
-							/>
+							<Link href='/servicios'>
+								<Button
+									label='Ver servicios'
+									id='services-btn'
+									variant='main'
+								/>
+							</Link>
 						</div>
 					</div>
 
