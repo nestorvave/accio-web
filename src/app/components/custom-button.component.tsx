@@ -1,7 +1,7 @@
 'use client';
 export interface IButton {
 	label: string;
-	variant?: 'main' | 'white';
+	variant?: 'main' | 'white' | 'accent';
 	icon?: React.ReactNode;
 	onClick?: () => void;
 	customStyles?: string;
@@ -34,6 +34,11 @@ const Button = ({
 			bgColor = 'bg-white ';
 			textColor = 'text-logo';
 			hoverBgColor = 'hover:text-main';
+			break;
+		case 'accent':
+			bgColor = 'bg-[#AD2AEE] ';
+			textColor = 'text-white';
+			hoverBgColor = 'hover:bg-[#AD2AEE]/80';
 			break;
 
 		default:

@@ -10,7 +10,7 @@ export const Navbar = () => {
 	const menu = [
 		{ label: 'Nosotros', link: '/about-us' },
 		{ label: 'Contacto', link: '/contact' },
-		{ label: 'Soluciones', link: '/solutions' },
+		{ label: 'Servicios', link: '/servicios' },
 	];
 
 	return (

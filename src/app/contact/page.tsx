@@ -4,7 +4,7 @@ import { ContactPage } from './components/contact-page';
 export const metadata: Metadata = {
 	title: 'Contacto - Consultoría de Software | Accio',
 	description:
-		'¿Tienes un proyecto en mente? Contáctanos para desarrollo web y móvil. Respuesta en 24 horas. Consulta gratuita y sin compromiso. +34 912 345 678',
+		'¿Tienes un proyecto en mente? Contáctanos para desarrollo web y móvil. Respuesta en 24 horas. Consulta gratuita y sin compromiso. +52 777 363 56 39',
 	keywords: [
 		'contacto desarrollo software',
 		'consultoría software México',
@@ -13,6 +13,9 @@ export const metadata: Metadata = {
 		'empresa desarrollo software',
 		'cotización desarrollo web',
 		'presupuesto app móvil',
+		'software personalizado Cuernavaca',
+		'software personalizado Guadalajara',
+		'software personalizado Monterrey',
 	],
 	openGraph: {
 		title: 'Contacto - Desarrollo Web y Móvil | Accio',
