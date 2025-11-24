@@ -76,7 +76,7 @@ export const useContact = () => {
 
 		try {
 			await axios.post(
-				`https://email-ser-c55b72e1acdb.herokuapp.com/apiprospects`,
+				`https://email-ser-c55b72e1acdb.herokuapp.com/api/prospects`,
 				payload
 			);
 			fnShowSnackbar(
