@@ -46,7 +46,7 @@ export const useContact = () => {
 	const post = async (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		const { name, email, description, service, phone } = payload;
-		if (!service ) {
+		if (!service) {
 			fnShowSnackbar('Porfavor elige el tipo de servicio que estas interesado.');
 
 			return;
@@ -72,15 +72,33 @@ export const useContact = () => {
 			fnShowSnackbar('La descripción debe tener al menos 15 caracteres.');
 
 			return;
-		} 
+		}
 
 		try {
-			await axios.post(
-				`${process.env.NEXT_PUBLIC_BACKEND_URL}prospects`,
-				payload
+			await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}prospects`, payload);
+			fnShowSnackbar(
+				'Gracias por tu mensaje, pronto nos pondremos en contacto contigo.',
+				'success'
 			);
+			setPayload({
+				name: '',
+				email: '',
+				description: '',
+				service: 'mobile',
+				phone: '',
+			});
 		} catch (error: unknown) {
 			if (error instanceof AxiosError) {
+				if (
+					error.response?.data.message ===
+					'Key (email)=(accio.ti.solutions@gmail.com) already exists.'
+				) {
+					fnShowSnackbar(
+						'El correo electrónico ya se encuentra registrado. Intenta con otro correo electrónico.',
+						'warning'
+					);
+					return;
+				}
 				fnShowSnackbar(
 					'Ha ocurrido un error, intentelo más tardo o contactenos por alguna de nuestras redes sociales.',
 					'error'
