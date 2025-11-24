@@ -75,7 +75,10 @@ export const useContact = () => {
 		}
 
 		try {
-			await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}prospects`, payload);
+			await axios.post(
+				`https://email-ser-c55b72e1acdb.herokuapp.com/apiprospects`,
+				payload
+			);
 			fnShowSnackbar(
 				'Gracias por tu mensaje, pronto nos pondremos en contacto contigo.',
 				'success'
