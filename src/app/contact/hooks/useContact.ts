@@ -5,7 +5,6 @@ interface IPayloadContact {
 	name: string;
 	email: string;
 	description: string;
-	phone: string;
 	service: 'web' | 'mobile' | 'software' | 'integration' | 'ai' | 'chatbot' | '';
 }
 
@@ -20,7 +19,6 @@ export const useContact = () => {
 		email: '',
 		description: '',
 		service: 'software',
-		phone: '',
 	});
 
 	const fnShowSnackbar = (
@@ -37,21 +35,18 @@ export const useContact = () => {
 	};
 
 	const onChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-		if (e.target.name === 'phone' && !/^[+\d\s()-]*$/.test(e.target.value)) {
-			return;
-		}
 		setPayload({ ...payload, [e.target.name]: e.target.value });
 	};
 
 	const post = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-		const { name, email, description, service, phone } = payload;
+		const { name, email, description, service } = payload;
 		if (!service) {
 			fnShowSnackbar('Porfavor elige el tipo de servicio que estas interesado.');
 
 			return;
 		}
-		if (!name || typeof name !== 'string') {
+		if (!name.trim()) {
 			fnShowSnackbar('Por favor ingresa un nombre válido.');
 
 			return;
@@ -62,14 +57,9 @@ export const useContact = () => {
 
 			return;
 		}
-		if (!phone || phone.length < 5) {
-			fnShowSnackbar('El número telefónico debe ser válido.');
-
-			return;
-		}
-
-		if (!description || description.length < 15) {
-			fnShowSnackbar('La descripción debe tener al menos 15 caracteres.');
+		const trimmedDescription = description.trim();
+		if (!trimmedDescription) {
+			fnShowSnackbar('Cuéntanos brevemente qué necesitas resolver.');
 
 			return;
 		}
@@ -86,13 +76,12 @@ export const useContact = () => {
 		const message = [
 			'Hola Accio, quiero platicar sobre un proyecto.',
 			'',
-			`Nombre: ${name}`,
-			`Teléfono: ${phone}`,
+			`Nombre: ${name.trim()}`,
 			email ? `Correo: ${email}` : '',
 			`Interés: ${serviceLabels[service]}`,
 			'',
 			'Problema o proyecto:',
-			description,
+			trimmedDescription,
 		]
 			.filter(Boolean)
 			.join('\n');

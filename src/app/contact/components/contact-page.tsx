@@ -17,7 +17,7 @@ export const ContactPage = () => {
 		typeSnackbar,
 		setShowSnackbar,
 	} = useContact();
-	const { name, email, description, service, phone } = payload;
+	const { name, email, description, service } = payload;
 
 	return (
 		<div className='inner-page'>
@@ -124,19 +124,6 @@ export const ContactPage = () => {
 							</label>
 						</div>
 						<div className='form-row'>
-							<label htmlFor='phone'>
-								Teléfono *
-								<input
-									id='phone'
-									type='tel'
-									name='phone'
-									autoComplete='tel'
-									value={phone}
-									onChange={onChange}
-									placeholder='+52 777 000 0000'
-									required
-								/>
-							</label>
 							<label htmlFor='service'>
 								¿Qué necesitas?
 								<select
@@ -177,7 +164,7 @@ export const ContactPage = () => {
 								onChange={onChange}
 								placeholder='¿Qué tarea te quita tiempo o qué problema quieres resolver con software o IA?'
 								rows={5}
-								minLength={15}
+								required
 							/>
 						</label>
 						<div className='contact-submit'>
