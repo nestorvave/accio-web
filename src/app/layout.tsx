@@ -82,7 +82,8 @@ export default function RootLayout({
 			<head>
 				<script
 					dangerouslySetInnerHTML={{
-						__html: `try{var mobile=window.matchMedia('(max-width: 767px)').matches;var key=mobile?'accio-intro-seen-mobile':'accio-intro-seen-desktop';if(sessionStorage.getItem(key)==='1'||window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.dataset.intro='seen'}else{sessionStorage.setItem(key,'1')}}catch(e){}`,
+						__html:
+							'try{var mobile=window.matchMedia(\'(max-width: 767px)\').matches;var key=mobile?\'accio-intro-seen-mobile\':\'accio-intro-seen-desktop\';if(sessionStorage.getItem(key)===\'1\'||window.matchMedia(\'(prefers-reduced-motion: reduce)\').matches){document.documentElement.dataset.intro=\'seen\'}else{sessionStorage.setItem(key,\'1\')}}catch(e){}',
 					}}
 				/>
 			</head>
