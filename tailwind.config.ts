@@ -1,29 +1,37 @@
 /* eslint-disable no-undef */
 import type { Config } from 'tailwindcss';
 
+// Colores de marca ACCIO (ver globals.css para los tokens claro/oscuro).
+// Radios: tarjetas 28px, campos 14px, botones pill. No mezclar.
+const token = (name: string) => `rgb(var(--${name}) / <alpha-value>)`;
+
 const config: Config = {
-	content: [
-		'./src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-		'./src/components/**/*.{js,ts,jsx,tsx,mdx}',
-		'./src/app/**/*.{js,ts,jsx,tsx,mdx}',
-	],
+	darkMode: 'media',
+	content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
 	theme: {
 		extend: {
 			colors: {
-				logo: '#0092CA',
-				main: '#3499FE',
+				paper: token('paper'),
+				surface: token('surface'),
+				ink: token('ink'),
+				muted: token('muted'),
+				line: token('line'),
+				accent: token('accent'),
+				// Fijos, no cambian con el tema
+				tinta: '#0B1220',
+				hueso: '#F5F3EE',
+				azul: '#2F6BFF',
 			},
-			backgroundColor: {
-				softBlue: '#F3F7F8',
+			fontFamily: {
+				display: ['var(--font-display)', 'system-ui', 'sans-serif'],
+				sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
 			},
-			keyframes: {
-				bounce: {
-					'0%, 100%': { transform: 'translateY(0)' },
-					'50%': { transform: 'translateY(-30px)' },
-				},
+			borderRadius: {
+				card: '28px',
+				field: '14px',
 			},
-			animation: {
-				bouncing: 'bounce 3.5s infinite ',
+			maxWidth: {
+				page: '1320px',
 			},
 		},
 	},

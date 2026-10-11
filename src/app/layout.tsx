@@ -1,55 +1,65 @@
-import type { Metadata } from 'next';
-import { Poppins } from 'next/font/google';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { Navbar } from '@/app/components/navbar.component';
 import { Footer } from '@/app/components/footer.component';
-import Head from 'next/head';
-import { ContactCard } from './components/contact-card.component';
+import { IntroLoader } from '@/app/components/brand';
+import { SITE_URL, SOCIAL_IMAGE } from './site';
 
-const inter = Poppins({ subsets: ['latin'], weight: ['500'] });
+export const viewport: Viewport = {
+	themeColor: '#f5f3ee',
+	colorScheme: 'light',
+};
 
 export const metadata: Metadata = {
-	title: 'Accio - Desarrollo de Software y Consultoría Tecnológica | México',
+	metadataBase: new URL(SITE_URL),
+	title: {
+		default: 'Accio | Software e inteligencia artificial para empresas',
+		template: '%s | Accio',
+	},
 	description:
-		'Empresa de desarrollo de software en México. Creamos aplicaciones web, APIs, sistemas empresariales y ofrecemos consultoría tecnológica. Soluciones a la medida para tu negocio.',
+		'Accio diseña software a la medida, automatización y soluciones con IA para resolver problemas reales en empresas de todo México.',
+	applicationName: 'Accio',
+	category: 'technology',
 	keywords: [
-		'desarrollo software México',
-		'consultoría tecnológica México',
-		'desarrollo aplicaciones web',
-		'software a la medida',
-		'empresa desarrollo software Morelos',
-		'desarrollo APIs',
-		'sistemas empresariales',
-		'consultoría TI',
+		'desarrollo de software a la medida',
+		'desarrollo web para empresas',
+		'aplicaciones web y móviles',
+		'software para empresas',
+		'inteligencia artificial aplicada a negocios',
+		'automatización de procesos con IA',
+		'integración de sistemas y APIs',
+		'chatbots con IA para empresas',
+		'chatbots para atención al cliente',
+		'software e inteligencia artificial en México',
 	],
+	authors: [{ name: 'Accio', url: SITE_URL }],
+	creator: 'Accio',
+	publisher: 'Accio',
+	alternates: { canonical: '/' },
 	openGraph: {
-		title: 'Accio - Transforma tus Ideas en Software',
+		title: 'Accio | Resolvemos problemas con software e IA',
 		description:
-			'Desarrollo de software y consultoría tecnológica en México. Aplicaciones web, APIs y sistemas personalizados para empresas.',
-		url: 'https://accio.mx',
+			'Diseñamos software a la medida, chatbots y automatización con IA para resolver problemas reales en empresas de México.',
+		url: '/',
 		siteName: 'Accio',
+		locale: 'es_MX',
 		type: 'website',
 		images: [
 			{
-				url: 'https://accio.mx/logo.png',
+				url: SOCIAL_IMAGE,
 				width: 1200,
 				height: 630,
-				alt: 'Accio - Desarrollo de Software en México',
+				type: 'image/svg+xml',
+				alt: 'Accio: software a la medida e inteligencia artificial aplicada',
 			},
 		],
-		locale: 'es_MX',
 	},
 	twitter: {
 		card: 'summary_large_image',
-		title: 'Accio - Desarrollo de Software',
-		description: 'Transformamos ideas en soluciones tecnológicas innovadoras',
-		images: ['https://accio.mx/logo.png'],
-	},
-	alternates: {
-		canonical: 'https://accio.mx',
-		languages: {
-			'es-MX': 'https://accio.mx',
-		},
+		title: 'Accio | Resolvemos problemas con software e IA',
+		description:
+			'Software a la medida, chatbots y automatización con IA para empresas de México.',
+		images: [SOCIAL_IMAGE],
 	},
 	robots: {
 		index: true,
@@ -57,28 +67,29 @@ export const metadata: Metadata = {
 		googleBot: {
 			index: true,
 			follow: true,
-			'max-video-preview': -1,
 			'max-image-preview': 'large',
 			'max-snippet': -1,
+			'max-video-preview': -1,
 		},
 	},
-	
 };
 
-export default async function RootLayout({
+export default function RootLayout({
 	children,
-}: Readonly<{
-	children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
 	return (
-		<html lang={'es'}>
-			<Head>
-				<link rel='canonical' href='https://accio.mx' key='canonical' />
-			</Head>
-			<body className={inter.className}>
+		<html lang='es-MX' suppressHydrationWarning>
+			<head>
+				<script
+					dangerouslySetInnerHTML={{
+						__html: `try{var mobile=window.matchMedia('(max-width: 767px)').matches;var key=mobile?'accio-intro-seen-mobile':'accio-intro-seen-desktop';if(sessionStorage.getItem(key)==='1'||window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.dataset.intro='seen'}else{sessionStorage.setItem(key,'1')}}catch(e){}`,
+					}}
+				/>
+			</head>
+			<body>
+				<IntroLoader />
 				<Navbar />
-				<main className='min-h-[60vh] px-12 md:px-32'>{children}</main>
-				<ContactCard />
+				<main className='min-h-[60vh]'>{children}</main>
 				<Footer />
 			</body>
 		</html>

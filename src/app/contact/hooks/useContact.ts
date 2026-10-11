@@ -1,12 +1,12 @@
-import axios, { AxiosError } from 'axios';
 import { ChangeEvent, useState } from 'react';
+import { CONTACT } from '@/app/site';
 
 interface IPayloadContact {
 	name: string;
 	email: string;
 	description: string;
 	phone: string;
-	service: 'web' | 'mobile' | '';
+	service: 'web' | 'mobile' | 'software' | 'integration' | 'ai' | 'chatbot' | '';
 }
 
 export const useContact = () => {
@@ -19,7 +19,7 @@ export const useContact = () => {
 		name: '',
 		email: '',
 		description: '',
-		service: 'mobile',
+		service: 'software',
 		phone: '',
 	});
 
@@ -37,13 +37,13 @@ export const useContact = () => {
 	};
 
 	const onChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-		if (e.target.name === 'phone' && isNaN(Number(e.target.value))) {
+		if (e.target.name === 'phone' && !/^[+\d\s()-]*$/.test(e.target.value)) {
 			return;
 		}
 		setPayload({ ...payload, [e.target.name]: e.target.value });
 	};
 
-	const post = async (event: React.FormEvent<HTMLFormElement>) => {
+	const post = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		const { name, email, description, service, phone } = payload;
 		if (!service) {
@@ -57,8 +57,8 @@ export const useContact = () => {
 			return;
 		}
 
-		if (!email || !isValidEmail(email)) {
-			fnShowSnackbar('Por favor ingresa un correo electrónico válido.');
+		if (email && !isValidEmail(email)) {
+			fnShowSnackbar('Revisa el formato del correo electrónico.');
 
 			return;
 		}
@@ -74,40 +74,37 @@ export const useContact = () => {
 			return;
 		}
 
-		try {
-			await axios.post(
-				`https://email-ser-c55b72e1acdb.herokuapp.com/api/prospects`,
-				payload
-			);
-			fnShowSnackbar(
-				'Gracias por tu mensaje, pronto nos pondremos en contacto contigo.',
-				'success'
-			);
-			setPayload({
-				name: '',
-				email: '',
-				description: '',
-				service: 'mobile',
-				phone: '',
-			});
-		} catch (error: unknown) {
-			if (error instanceof AxiosError) {
-				if (
-					error.response?.data.message ===
-					'Key (email)=(accio.ti.solutions@gmail.com) already exists.'
-				) {
-					fnShowSnackbar(
-						'El correo electrónico ya se encuentra registrado. Intenta con otro correo electrónico.',
-						'warning'
-					);
-					return;
-				}
-				fnShowSnackbar(
-					'Ha ocurrido un error, intentelo más tardo o contactenos por alguna de nuestras redes sociales.',
-					'error'
-				);
-			}
-		}
+		const serviceLabels: Record<IPayloadContact['service'], string> = {
+			web: 'Sitio web o plataforma',
+			mobile: 'Aplicación móvil',
+			software: 'Software a la medida',
+			integration: 'Integraciones y APIs',
+			ai: 'IA y automatización',
+			chatbot: 'Chatbot o asistente de IA',
+			'': 'Por definir',
+		};
+		const message = [
+			'Hola Accio, quiero platicar sobre un proyecto.',
+			'',
+			`Nombre: ${name}`,
+			`Teléfono: ${phone}`,
+			email ? `Correo: ${email}` : '',
+			`Interés: ${serviceLabels[service]}`,
+			'',
+			'Problema o proyecto:',
+			description,
+		]
+			.filter(Boolean)
+			.join('\n');
+		const whatsappNumber = CONTACT.whatsapp;
+		const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+		const whatsappWindow = window.open(whatsappUrl, '_blank');
+		if (whatsappWindow) whatsappWindow.opener = null;
+		else window.location.assign(whatsappUrl);
+		fnShowSnackbar(
+			'WhatsApp abrirá con tu mensaje listo. Solo falta enviarlo.',
+			'success'
+		);
 	};
 
 	return {

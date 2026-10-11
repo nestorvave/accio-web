@@ -1,30 +1,11 @@
-import { MetadataRoute } from 'next';
+import type { MetadataRoute } from 'next';
+import { SITE_URL } from './site';
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-	const baseUrl = 'https://accio.mx';
-
-	const urls = [
-		{
-			url: `${baseUrl}`,
-			lastModified: new Date(),
-			priority: 1,
-		},
-		{
-			url: `${baseUrl}/about-us`,
-			lastModified: new Date(),
-			priority: 0.8,
-		},
-		{
-			url: `${baseUrl}/servicios`,
-			lastModified: new Date(),
-			priority: 0.9,
-		},
-		{
-			url: `${baseUrl}/contact`,
-			lastModified: new Date(),
-			priority: 0.7,
-		},
+export default function sitemap(): MetadataRoute.Sitemap {
+	return [
+		{ url: SITE_URL, changeFrequency: 'monthly', priority: 1 },
+		{ url: `${SITE_URL}/servicios`, changeFrequency: 'monthly', priority: 0.9 },
+		{ url: `${SITE_URL}/about-us`, changeFrequency: 'yearly', priority: 0.7 },
+		{ url: `${SITE_URL}/contact`, changeFrequency: 'yearly', priority: 0.7 },
 	];
-
-	return urls;
 }

@@ -1,73 +1,107 @@
 'use client';
 import Link from 'next/link';
-import { useState } from 'react';
-import Button from './custom-button.component';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { PiList, PiX } from 'react-icons/pi';
+import { CtaLink } from './custom-button.component';
+import { NAV } from '../navigation';
 
 export const Navbar = () => {
 	const [open, setOpen] = useState(false);
+	const pathname = usePathname();
 
-	const menu = [
-		{ label: 'Nosotros', link: '/about-us' },
-		{ label: 'Contacto', link: '/contact' },
-		{ label: 'Servicios', link: '/servicios' },
-	];
+	useEffect(() => setOpen(false), [pathname]);
 
 	return (
-		<nav className='sticky w-full top-0 z-50 border-gray-200 bg-gray-900'>
-			<div className='mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4'>
-				<Link href={'/'} className='w-1/2 md:w-auto'>
-					<Image src={'/logo.png'} alt='logo'  width={170} height={0} />
+		<header className='sticky top-0 z-50 px-4 pt-3 sm:px-6'>
+			<nav
+				aria-label='Principal'
+				className='mx-auto flex h-16 max-w-page items-center justify-between rounded-full border border-line/70 bg-paper/75 pl-6 pr-2 backdrop-blur-xl supports-[backdrop-filter]:bg-paper/60'
+			>
+				<Link href='/' aria-label='Accio, inicio' className='text-ink'>
+					<Image
+						src='/brand/accio-logo.svg'
+						alt='Accio'
+						width={105}
+						height={36}
+						priority
+						className='h-6 w-auto'
+					/>
 				</Link>
 
-				<section className='flex w-1/2 items-center justify-end space-x-1 md:order-2 md:w-auto md:space-x-0 rtl:space-x-reverse'>
-					<div className='hidden md:block'>
-						<Link href={'/contact'} className='w-1/2 md:w-1/3'>
-							<Button label='Solicitar Consulta' id='contact-btn' variant='main' />
-						</Link>
-					</div>
-					<button
-						onClick={() => setOpen(!open)}
-						type='button'
-						className='ext-gray-400 inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-600 md:hidden'
-					>
-						<span className='sr-only'>Open main menu</span>
-						<svg
-							className='h-5 w-5'
-							aria-hidden='true'
-							xmlns='http://www.w3.org/2000/svg'
-							fill='none'
-							viewBox='0 0 17 14'
-						>
-							<path
-								stroke='currentColor'
-								strokeLinecap='round'
-								strokeLinejoin='round'
-								d='M1 1h15M1 7h15M1 13h15'
-							/>
-						</svg>
-					</button>
-				</section>
-				<div
-					className={` ${!open && 'hidden'} w-full items-center justify-between md:order-1 md:flex md:w-auto`}
-					id='navbar-language'
-				>
-					<ul className='mt-4 flex flex-col rounded-lg border border-gray-700 bg-gray-800 p-4 font-medium md:mt-0 md:flex-row md:space-x-12 md:border-0 md:bg-gray-900 md:p-0 rtl:space-x-reverse'>
-						{menu.map(({ label, link }) => (
-							<li key={label}>
+				<ul className='hidden items-center gap-1 md:flex'>
+					{NAV.map(({ label, href }) => {
+						const active = pathname === href;
+						return (
+							<li key={href}>
 								<Link
-									locale={false}
-									onClick={() => setOpen(false)}
-									href={link}
-									className='active:bd-blue-600 block rounded border-gray-700 px-3 py-2 text-white hover:bg-gray-100 md:p-0 md:hover:bg-transparent md:hover:text-blue-500'
+									href={href}
+									aria-current={active ? 'page' : undefined}
+									className={`rounded-full px-4 py-2 text-[15px] transition-colors hover:bg-ink/[0.06] ${
+										active ? 'text-ink' : 'text-muted hover:text-ink'
+									}`}
 								>
 									{label}
 								</Link>
 							</li>
-						))}
-					</ul>
+						);
+					})}
+				</ul>
+
+				<div className='flex items-center gap-2'>
+					<CtaLink
+						href='/contact'
+						label='Hablemos de tu proyecto'
+						className='hidden !py-2.5 sm:inline-flex'
+					/>
+					<button
+						type='button'
+						onClick={() => setOpen((v) => !v)}
+						aria-expanded={open}
+						aria-controls='menu-movil'
+						className='grid h-11 w-11 place-items-center rounded-full text-ink hover:bg-ink/[0.06] md:hidden'
+					>
+						<span className='sr-only'>
+							{open ? 'Cerrar menú' : 'Abrir menú'}
+						</span>
+						{open ? (
+							<PiX className='h-6 w-6' />
+						) : (
+							<PiList className='h-6 w-6' />
+						)}
+					</button>
+				</div>
+			</nav>
+
+			<div
+				id='menu-movil'
+				className={`absolute inset-x-4 top-full mt-2 overflow-hidden rounded-card border border-line bg-surface transition-[opacity,transform,visibility] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] sm:inset-x-6 md:hidden ${
+					open
+						? 'visible translate-y-0 opacity-100'
+						: 'invisible -translate-y-2 opacity-0'
+				}`}
+			>
+				<ul className='p-3'>
+					{NAV.map(({ label, href }) => (
+						<li key={href}>
+							<Link
+								href={href}
+								className='block rounded-field px-4 py-3 font-display text-2xl text-ink hover:bg-ink/[0.05]'
+							>
+								{label}
+							</Link>
+						</li>
+					))}
+				</ul>
+				<div className='border-t border-line p-4 sm:hidden'>
+					<CtaLink
+						href='/contact'
+						label='Hablemos de tu proyecto'
+						className='w-full'
+					/>
 				</div>
 			</div>
-		</nav>
+		</header>
 	);
 };
