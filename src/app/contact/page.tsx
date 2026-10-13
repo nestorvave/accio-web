@@ -1,10 +1,14 @@
 import { ContactPage } from './components/contact-page';
-import { pageMeta } from '../site';
+import { JsonLd } from '../components/json-ld';
+import { breadcrumbLd, pageMeta, webPageLd } from '../site';
+
+const TITLE = 'Contacto: cotiza software, chatbots o IA para tu empresa';
+const DESCRIPTION =
+	'Cuéntanos qué proceso quieres mejorar. Te respondemos en un día hábil por WhatsApp o correo. Software a la medida, chatbots y automatización con IA en México.';
 
 export const metadata = pageMeta({
-	title: 'Contacto: software, chatbots e IA para empresas',
-	description:
-		'Cuéntanos qué proceso quieres mejorar. Creamos software a la medida, chatbots y asistentes de IA para empresas de todo México.',
+	title: TITLE,
+	description: DESCRIPTION,
 	path: '/contact',
 	keywords: [
 		'contacto Accio',
@@ -14,9 +18,12 @@ export const metadata = pageMeta({
 		'software a la medida para empresas',
 	],
 });
+
 export default function Contact() {
 	return (
 		<>
+			<JsonLd data={webPageLd({ type: 'ContactPage', name: TITLE, description: DESCRIPTION, path: '/contact' })} />
+			<JsonLd data={breadcrumbLd([{ name: 'Contacto', path: '/contact' }])} />
 			<ContactPage />
 		</>
 	);

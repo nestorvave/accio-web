@@ -1,94 +1,94 @@
 import Link from 'next/link';
-import Image from 'next/image';
-import { PiInstagramLogo, PiLinkedinLogo } from 'react-icons/pi';
+import {
+	PiInstagramLogo,
+	PiLinkedinLogo,
+	PiWhatsappLogo,
+} from 'react-icons/pi';
 import { NAV } from '../navigation';
-import { CONTACT } from '../site';
+import { CONTACT, SERVICES, whatsappUrl } from '../site';
+import { Wordmark } from './brand';
 
 export const Footer = () => (
-	<footer className='mt-14 bg-tinta text-hueso sm:mt-24'>
-		<div className='mx-auto max-w-page px-4 pb-8 pt-16 sm:px-6 sm:pb-10 sm:pt-20'>
-			<div className='grid gap-8 md:grid-cols-[1.4fr_1fr_1fr] md:gap-12'>
-				<div className='max-w-sm'>
-					<p className='font-display text-3xl leading-tight tracking-tight'>
+	<footer className='site-footer'>
+		<div className='page-wrap'>
+			<div className='site-footer__grid'>
+				<div className='site-footer__intro'>
+					<p className='site-footer__claim'>
 						Software e IA para resolver problemas reales.
 					</p>
-					<p className='mt-4 text-hueso/60'>
-						Creamos software a la medida y aplicamos inteligencia artificial
-						para automatizar tareas y mejorar procesos en empresas de México.
+					<p>
+						Desarrollo de software a la medida, chatbots y automatización con
+						inteligencia artificial desde {CONTACT.city}, {CONTACT.region}, para
+						empresas de todo México.
 					</p>
 				</div>
 
-				<nav aria-label='Pie de página'>
-					<ul className='space-y-3'>
+				<nav aria-label='Sitio'>
+					<p className='site-footer__head'>Sitio</p>
+					<ul>
 						<li>
-							<Link
-								href='/'
-								className='text-hueso/70 transition-colors hover:text-hueso'
-							>
-								Inicio
-							</Link>
+							<Link href='/'>Inicio</Link>
 						</li>
 						{NAV.map(({ label, href }) => (
 							<li key={href}>
-								<Link
-									href={href}
-									className='text-hueso/70 transition-colors hover:text-hueso'
-								>
-									{label}
-								</Link>
+								<Link href={href}>{label}</Link>
 							</li>
 						))}
 					</ul>
 				</nav>
 
-				<div className='space-y-3'>
-					<a
-						href={`mailto:${CONTACT.email}`}
-						className='block break-all text-hueso/70 transition-colors hover:text-hueso'
-					>
-						{CONTACT.email}
-					</a>
-					<a
-						href={`tel:${CONTACT.phone}`}
-						className='block text-hueso/70 transition-colors hover:text-hueso'
-					>
-						{CONTACT.phoneLabel}
-					</a>
-					<div className='flex gap-2 pt-2'>
-						<a
-							href={CONTACT.instagram}
-							target='_blank'
-							rel='noopener noreferrer'
-							className='grid h-11 w-11 place-items-center rounded-full border border-hueso/15 transition-colors hover:border-hueso/40 hover:bg-hueso/5'
-						>
-							<PiInstagramLogo className='h-5 w-5' />
+				<nav aria-label='Servicios'>
+					<p className='site-footer__head'>Servicios</p>
+					<ul>
+						{SERVICES.map(({ id, name }) => (
+							<li key={id}>
+								<Link href={`/servicios#${id}`}>{name}</Link>
+							</li>
+						))}
+					</ul>
+				</nav>
+
+				<address className='not-italic'>
+					<p className='site-footer__head'>Contacto</p>
+					<ul>
+						<li>
+							<a href={whatsappUrl()} target='_blank' rel='noopener noreferrer'>
+								WhatsApp
+							</a>
+						</li>
+						<li>
+							<a href={`mailto:${CONTACT.email}`} className='break-all'>
+								{CONTACT.email}
+							</a>
+						</li>
+						<li>
+							<a href={`tel:${CONTACT.phone}`}>{CONTACT.phoneLabel}</a>
+						</li>
+						<li className='site-footer__muted'>
+							{CONTACT.city}, {CONTACT.region}, México
+						</li>
+					</ul>
+					<div className='site-footer__social'>
+						<a href={whatsappUrl()} target='_blank' rel='noopener noreferrer'>
+							<PiWhatsappLogo aria-hidden />
+							<span className='sr-only'>WhatsApp</span>
+						</a>
+						<a href={CONTACT.instagram} target='_blank' rel='noopener noreferrer'>
+							<PiInstagramLogo aria-hidden />
 							<span className='sr-only'>Instagram</span>
 						</a>
-						<a
-							href={CONTACT.linkedin}
-							target='_blank'
-							rel='noopener noreferrer'
-							className='grid h-11 w-11 place-items-center rounded-full border border-hueso/15 transition-colors hover:border-hueso/40 hover:bg-hueso/5'
-						>
-							<PiLinkedinLogo className='h-5 w-5' />
+						<a href={CONTACT.linkedin} target='_blank' rel='noopener noreferrer'>
+							<PiLinkedinLogo aria-hidden />
 							<span className='sr-only'>LinkedIn</span>
 						</a>
 					</div>
-				</div>
+				</address>
 			</div>
 
-			<Image
-				src='/brand/accio-logo-hueso.svg'
-				alt='Accio'
-				width={420}
-				height={141}
-				className='mt-12 h-auto w-44 sm:mt-20 sm:w-52'
-			/>
+			<Wordmark className='site-footer__mark' title='Accio' />
 
-			<div className='mt-8 flex flex-col justify-between gap-2 border-t border-hueso/10 pt-6 text-sm text-hueso/50 sm:flex-row'>
-				<span>
-					© {new Date().getFullYear()} Accio. Todos los derechos reservados.
-				</span>
+			<div className='site-footer__legal'>
+				<span>© {new Date().getFullYear()} Accio. Todos los derechos reservados.</span>
 				<span>accio.mx</span>
 			</div>
 		</div>

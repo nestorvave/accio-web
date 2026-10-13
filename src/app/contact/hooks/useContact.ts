@@ -41,28 +41,15 @@ export const useContact = () => {
 	const post = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		const { name, email, description, service } = payload;
-		if (!service) {
-			fnShowSnackbar('Porfavor elige el tipo de servicio que estas interesado.');
-
-			return;
-		}
-		if (!name.trim()) {
-			fnShowSnackbar('Por favor ingresa un nombre válido.');
-
-			return;
-		}
-
+		// Ningún campo es obligatorio: lo que falte se platica en WhatsApp.
+		// Solo validamos el formato del correo si lo escribieron.
 		if (email && !isValidEmail(email)) {
 			fnShowSnackbar('Revisa el formato del correo electrónico.');
 
 			return;
 		}
+		const trimmedName = name.trim();
 		const trimmedDescription = description.trim();
-		if (!trimmedDescription) {
-			fnShowSnackbar('Cuéntanos brevemente qué necesitas resolver.');
-
-			return;
-		}
 
 		const serviceLabels: Record<IPayloadContact['service'], string> = {
 			web: 'Sitio web o plataforma',
@@ -76,12 +63,10 @@ export const useContact = () => {
 		const message = [
 			'Hola Accio, quiero platicar sobre un proyecto.',
 			'',
-			`Nombre: ${name.trim()}`,
+			trimmedName ? `Nombre: ${trimmedName}` : '',
 			email ? `Correo: ${email}` : '',
 			`Interés: ${serviceLabels[service]}`,
-			'',
-			'Problema o proyecto:',
-			trimmedDescription,
+			trimmedDescription ? `Problema o proyecto: ${trimmedDescription}` : '',
 		]
 			.filter(Boolean)
 			.join('\n');

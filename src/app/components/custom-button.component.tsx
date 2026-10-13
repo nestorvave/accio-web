@@ -1,32 +1,17 @@
 import Link from 'next/link';
 import { PiArrowUpRight } from 'react-icons/pi';
 
-type Variant = 'main' | 'ghost' | 'light';
+type Variant = 'primary' | 'ghost' | 'light';
 
-const base =
-	'group inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full px-6 py-3 text-[15px] font-semibold transition-[transform,background-color,color,box-shadow] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] active:scale-[0.97] disabled:pointer-events-none disabled:opacity-60';
+export const buttonClass = (variant: Variant = 'primary', extra = '') =>
+	`btn btn--${variant} ${extra}`.trim();
 
-const variants: Record<Variant, string> = {
-	// Azul de marca con texto blanco (contraste 4.7:1)
-	main: 'bg-azul text-white shadow-[0_8px_24px_-8px_rgba(47,107,255,0.55)] hover:bg-[#2459DB]',
-	ghost: 'border border-line text-ink hover:border-ink/40 hover:bg-ink/[0.04]',
-	light: 'bg-hueso text-tinta hover:bg-white',
-};
-
-export const buttonClass = (variant: Variant = 'main', extra = '') =>
-	`${base} ${variants[variant]} ${extra}`;
-
-const Arrow = () => (
-	<PiArrowUpRight
-		aria-hidden
-		className='h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5'
-	/>
-);
+const Arrow = () => <PiArrowUpRight aria-hidden className='btn__arrow' />;
 
 export const CtaLink = ({
 	href,
 	label,
-	variant = 'main',
+	variant = 'primary',
 	className = '',
 	arrow = true,
 }: {
@@ -51,7 +36,14 @@ export interface IButton {
 	isSubmit?: boolean;
 }
 
-const Button = ({ label, variant = 'main', customStyles = '', id, disabled, isSubmit }: IButton) => (
+const Button = ({
+	label,
+	variant = 'primary',
+	customStyles = '',
+	id,
+	disabled,
+	isSubmit,
+}: IButton) => (
 	<button
 		type='submit'
 		id={id}
@@ -62,7 +54,7 @@ const Button = ({ label, variant = 'main', customStyles = '', id, disabled, isSu
 		{isSubmit ? (
 			<>
 				Enviando
-				<span className='h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white' />
+				<span className='btn__spinner' aria-hidden='true' />
 			</>
 		) : (
 			<>

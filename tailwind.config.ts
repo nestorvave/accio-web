@@ -1,8 +1,7 @@
 /* eslint-disable no-undef */
 import type { Config } from 'tailwindcss';
 
-// Colores de marca ACCIO (ver globals.css para los tokens claro/oscuro).
-// Radios: tarjetas 28px, campos 14px, botones pill. No mezclar.
+// Colores de marca ACCIO. Los tokens viven en globals.css.
 const token = (name: string) => `rgb(var(--${name}) / <alpha-value>)`;
 
 const config: Config = {
@@ -16,6 +15,7 @@ const config: Config = {
 				ink: token('ink'),
 				muted: token('muted'),
 				line: token('line'),
+				sunken: token('sunken'),
 				accent: token('accent'),
 				// Fijos, no cambian con el tema
 				tinta: '#0B1220',
@@ -27,8 +27,8 @@ const config: Config = {
 				sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
 			},
 			borderRadius: {
-				card: '28px',
-				field: '14px',
+				card: 'var(--r-card)',
+				field: 'var(--r-field)',
 			},
 			maxWidth: {
 				page: '1320px',

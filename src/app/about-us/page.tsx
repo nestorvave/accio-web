@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { pageMeta } from '../site';
 import {
 	PiArrowRight,
 	PiCompass,
@@ -7,15 +6,21 @@ import {
 	PiLightbulb,
 	PiUsersThree,
 } from 'react-icons/pi';
+import { JsonLd } from '../components/json-ld';
+import { breadcrumbLd, pageMeta, webPageLd } from '../site';
+
+const TITLE = 'Nosotros: equipo de software e inteligencia artificial';
+const DESCRIPTION =
+	'Conoce a Accio: un equipo en Cuernavaca, Morelos, que diseña software e inteligencia artificial aplicada para resolver problemas reales en empresas de todo México.';
 
 export const metadata = pageMeta({
-	title: 'Equipo de software e inteligencia artificial',
-	description:
-		'Conoce al equipo de Accio. Diseñamos software e inteligencia artificial aplicada para resolver problemas reales en empresas de todo México.',
+	title: TITLE,
+	description: DESCRIPTION,
 	path: '/about-us',
 	keywords: [
 		'equipo de desarrollo de software',
-		'empresa de inteligencia artificial aplicada',
+		'empresa de inteligencia artificial en México',
+		'desarrolladores de software en Cuernavaca',
 		'Accio software e IA',
 	],
 });
@@ -49,105 +54,82 @@ const principles = [
 
 export default function AboutUs() {
 	return (
-		<div className='inner-page'>
-			<section className='inner-hero'>
-				<div className='inner-wrap'>
-					<p className='eyebrow'>
-						<span className='eyebrow-dot' /> Sobre Accio
-					</p>
-					<h1 className='inner-title'>
-						Problemas reales.
-						<br />
-						<span className='text-blue'>Software e IA útil.</span>
+		<>
+			<JsonLd data={webPageLd({ type: 'AboutPage', name: TITLE, description: DESCRIPTION, path: '/about-us' })} />
+			<JsonLd data={breadcrumbLd([{ name: 'Nosotros', path: '/about-us' }])} />
+
+			<section className='page-hero'>
+				<div className='page-wrap'>
+					<h1 className='page-hero__title'>
+						Problemas reales. <span className='accent'>Software e IA útil.</span>
 					</h1>
-					<p className='inner-lead'>
+					<p className='page-hero__lead'>
 						Somos un equipo que combina desarrollo de software e inteligencia
 						artificial para quitar fricción de procesos y resolver problemas
-						reales de negocio. Trabajamos en línea con empresas de todo México.
+						reales de negocio. Estamos en Cuernavaca y trabajamos en línea con
+						empresas de todo México.
 					</p>
-					<Link href='/contact' className='button-primary mt-8'>
-						Conoce al equipo <PiArrowRight />
-					</Link>
-				</div>
-				<div className='about-stamp' aria-hidden='true'>
-					<span>ACCIO</span>
-					<small>
-						Hecho para avanzar
-						<br />
-						Todo México · En línea
-					</small>
 				</div>
 			</section>
-			<section className='inner-wrap py-20 sm:py-28'>
-				<div className='about-story'>
-					<div>
-						<p className='eyebrow'>Nuestra forma de pensar</p>
-						<h2 className='section-title'>
-							La tecnología funciona mejor cuando{' '}
-							<span className='text-blue'>
-								resuelve un problema concreto.
-							</span>
+
+			<section className='section'>
+				<div className='page-wrap story'>
+					<h2 className='section__title'>
+						La tecnología funciona mejor cuando{' '}
+						<span className='accent'>resuelve un problema concreto.</span>
+					</h2>
+					<div className='story__text'>
+						<p>
+							Empezamos cada proyecto identificando dónde se pierde tiempo, qué
+							tareas se repiten y qué problemas no resuelven las herramientas
+							actuales.
+						</p>
+						<p>
+							Después diseñamos software e IA alrededor de ese reto. Cada entrega
+							tiene un propósito claro y una forma de comprobar que mejora el
+							trabajo.
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<section className='section section--sunken' aria-labelledby='valores-title'>
+				<div className='page-wrap'>
+					<header className='section__head'>
+						<h2 id='valores-title' className='section__title'>
+							Un buen socio <span className='accent'>se nota en el proceso.</span>
 						</h2>
-					</div>
-					<div className='space-y-5 text-lg leading-8 text-muted'>
-						<p>
-							Empezamos cada proyecto identificando dónde se pierde tiempo,
-							qué tareas se repiten y qué problemas no resuelven las
-							herramientas actuales.
+						<p className='section__intro'>
+							La calidad técnica importa. La forma en que llegamos a ella también.
 						</p>
-						<p>
-							Después diseñamos software e IA alrededor de ese reto. Cada
-							entrega tiene un propósito claro y una forma de comprobar que
-							mejora el trabajo.
-						</p>
-					</div>
-				</div>
-			</section>
-			<section className='values-section px-5 py-20 sm:px-8 sm:py-28'>
-				<div className='mx-auto max-w-page'>
-					<div className='section-heading'>
-						<div>
-							<p className='eyebrow'>Lo que nos guía</p>
-							<h2 className='section-title'>
-								Un buen socio
-								<br />
-								<span className='text-muted'>se nota en el proceso.</span>
-							</h2>
-						</div>
-						<p className='section-intro'>
-							La calidad técnica importa. La forma en que llegamos a ella
-							también.
-						</p>
-					</div>
-					<div className='values-grid mt-14'>
+					</header>
+					<ul className='values'>
 						{principles.map(({ icon: Icon, title, description }, i) => (
-							<article className='value-card' key={title}>
-								<span className='value-index'>0{i + 1}</span>
-								<span className='value-icon'>
-									<Icon />
+							<li key={title} data-reveal style={{ '--i': i } as React.CSSProperties}>
+								<span className='values__icon'>
+									<Icon aria-hidden />
 								</span>
 								<h3>{title}</h3>
 								<p>{description}</p>
-							</article>
+							</li>
 						))}
-					</div>
+					</ul>
 				</div>
 			</section>
-			<section className='inner-wrap py-20 sm:py-28'>
-				<div className='about-cta'>
-					<div>
-						<p className='eyebrow'>El siguiente paso</p>
+
+			<section className='section section--tight'>
+				<div className='page-wrap'>
+					<div className='closing'>
 						<h2>
-							¿Qué te gustaría
-							<br />
-							hacer posible?
+							¿Qué te gustaría <span className='accent'>hacer posible?</span>
 						</h2>
+						<p>Cuéntanos la idea. Te respondemos en un día hábil.</p>
+						<Link href='/contact' className='btn btn--primary'>
+							Cuéntanos tu idea <PiArrowRight aria-hidden className='btn__arrow' />
+						</Link>
 					</div>
-					<Link href='/contact' className='button-primary'>
-						Cuéntanos tu idea <PiArrowRight />
-					</Link>
 				</div>
 			</section>
-		</div>
+		</>
 	);
 }

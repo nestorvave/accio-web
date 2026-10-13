@@ -1,47 +1,69 @@
 import type { Metadata, Viewport } from 'next';
+import { Bricolage_Grotesque, Instrument_Sans } from 'next/font/google';
 import './globals.css';
 import { Navbar } from '@/app/components/navbar.component';
 import { Footer } from '@/app/components/footer.component';
 import { IntroLoader } from '@/app/components/brand';
-import { SITE_URL, SOCIAL_IMAGE } from './site';
+import { WhatsAppFab } from '@/app/components/whatsapp-fab';
+import { RevealObserver } from '@/app/components/reveal';
+import { JsonLd } from '@/app/components/json-ld';
+import { CONTACT, SITE_NAME, SITE_URL, SOCIAL_IMAGE, siteGraph } from './site';
+
+const display = Bricolage_Grotesque({
+	subsets: ['latin'],
+	variable: '--font-display',
+	display: 'swap',
+	axes: ['opsz', 'wdth'],
+});
+const sans = Instrument_Sans({
+	subsets: ['latin'],
+	variable: '--font-sans',
+	display: 'swap',
+});
 
 export const viewport: Viewport = {
 	themeColor: '#f5f3ee',
 	colorScheme: 'light',
+	width: 'device-width',
+	initialScale: 1,
+	viewportFit: 'cover',
 };
+
+const DESCRIPTION =
+	'Desarrollo de software a la medida, chatbots y automatización con inteligencia artificial para empresas en México. Equipo en Cuernavaca, Morelos, con atención en línea.';
 
 export const metadata: Metadata = {
 	metadataBase: new URL(SITE_URL),
 	title: {
-		default: 'Accio | Software e inteligencia artificial para empresas',
+		default: 'Accio | Software a la medida, chatbots e IA para empresas en México',
 		template: '%s | Accio',
 	},
-	description:
-		'Accio diseña software a la medida, automatización y soluciones con IA para resolver problemas reales en empresas de todo México.',
-	applicationName: 'Accio',
+	description: DESCRIPTION,
+	applicationName: SITE_NAME,
 	category: 'technology',
 	keywords: [
 		'desarrollo de software a la medida',
+		'empresa de desarrollo de software en México',
+		'desarrollo de software en Cuernavaca',
+		'chatbots con inteligencia artificial',
+		'chatbot para WhatsApp',
+		'automatización de procesos con IA',
+		'inteligencia artificial para empresas',
 		'desarrollo web para empresas',
 		'aplicaciones web y móviles',
-		'software para empresas',
-		'inteligencia artificial aplicada a negocios',
-		'automatización de procesos con IA',
 		'integración de sistemas y APIs',
-		'chatbots con IA para empresas',
-		'chatbots para atención al cliente',
-		'software e inteligencia artificial en México',
 	],
-	authors: [{ name: 'Accio', url: SITE_URL }],
-	creator: 'Accio',
-	publisher: 'Accio',
-	alternates: { canonical: '/' },
+	authors: [{ name: SITE_NAME, url: SITE_URL }],
+	creator: SITE_NAME,
+	publisher: SITE_NAME,
+	alternates: { canonical: '/', languages: { 'es-MX': '/' } },
+	formatDetection: { telephone: false, email: false, address: false },
 	openGraph: {
 		title: 'Accio | Resolvemos problemas con software e IA',
 		description:
-			'Diseñamos software a la medida, chatbots y automatización con IA para resolver problemas reales en empresas de México.',
+			'Software a la medida, chatbots y automatización con IA para empresas de México.',
 		url: '/',
-		siteName: 'Accio',
+		siteName: SITE_NAME,
 		locale: 'es_MX',
 		type: 'website',
 		images: [
@@ -49,7 +71,7 @@ export const metadata: Metadata = {
 				url: SOCIAL_IMAGE,
 				width: 1200,
 				height: 630,
-				type: 'image/svg+xml',
+				type: 'image/png',
 				alt: 'Accio: software a la medida e inteligencia artificial aplicada',
 			},
 		],
@@ -72,26 +94,41 @@ export const metadata: Metadata = {
 			'max-video-preview': -1,
 		},
 	},
+	other: {
+		'geo.region': CONTACT.regionCode,
+		'geo.placename': CONTACT.city,
+	},
 };
+
+// Antes del primer pintado: marca JS y decide si se ve la intro.
+const bootScript =
+	'try{var d=document.documentElement;d.classList.add("js");var m=window.matchMedia("(max-width: 767px)").matches;var k=m?"accio-intro-seen-mobile":"accio-intro-seen-desktop";if(sessionStorage.getItem(k)==="1"||window.matchMedia("(prefers-reduced-motion: reduce)").matches){d.dataset.intro="seen"}else{sessionStorage.setItem(k,"1")}}catch(e){}';
 
 export default function RootLayout({
 	children,
 }: Readonly<{ children: React.ReactNode }>) {
 	return (
-		<html lang='es-MX' suppressHydrationWarning>
+		<html
+			lang='es-MX'
+			className={`${display.variable} ${sans.variable}`}
+			suppressHydrationWarning
+		>
 			<head>
-				<script
-					dangerouslySetInnerHTML={{
-						__html:
-							'try{var mobile=window.matchMedia(\'(max-width: 767px)\').matches;var key=mobile?\'accio-intro-seen-mobile\':\'accio-intro-seen-desktop\';if(sessionStorage.getItem(key)===\'1\'||window.matchMedia(\'(prefers-reduced-motion: reduce)\').matches){document.documentElement.dataset.intro=\'seen\'}else{sessionStorage.setItem(key,\'1\')}}catch(e){}',
-					}}
-				/>
+				<script dangerouslySetInnerHTML={{ __html: bootScript }} />
+				<JsonLd data={siteGraph} />
 			</head>
 			<body>
+				<a href='#contenido' className='skip-link'>
+					Saltar al contenido
+				</a>
 				<IntroLoader />
 				<Navbar />
-				<main className='min-h-[60vh]'>{children}</main>
+				<main id='contenido' tabIndex={-1}>
+					{children}
+				</main>
 				<Footer />
+				<WhatsAppFab />
+				<RevealObserver />
 			</body>
 		</html>
 	);
