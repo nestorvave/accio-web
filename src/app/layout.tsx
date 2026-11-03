@@ -7,6 +7,7 @@ import { IntroLoader } from '@/app/components/brand';
 import { WhatsAppFab } from '@/app/components/whatsapp-fab';
 import { RevealObserver } from '@/app/components/reveal';
 import { JsonLd } from '@/app/components/json-ld';
+import { Analytics } from '@/app/components/analytics';
 import { CONTACT, SITE_NAME, SITE_URL, SOCIAL_IMAGE, siteGraph } from './site';
 
 const display = Bricolage_Grotesque({
@@ -129,6 +130,7 @@ export default function RootLayout({
 				<Footer />
 				<WhatsAppFab />
 				<RevealObserver />
+				<Analytics />
 			</body>
 		</html>
 	);

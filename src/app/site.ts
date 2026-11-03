@@ -6,14 +6,16 @@ export const SITE_NAME = 'Accio';
 export const TAGLINE = 'Software e IA para resolver problemas reales';
 export const SOCIAL_IMAGE = '/og/accio-og.png';
 export const LOGO_PNG = '/icon-512.png';
+// ID de medición de Google Analytics 4 (G-XXXXXXX). Vacío = sin Analytics.
+export const GA_ID = 'G-S8CXM5PLWP';
 
 export const CONTACT = {
 	email: 'accio.ti.solutions@gmail.com',
-	phone: '+527773635639',
-	phoneLabel: '+52 777 363 56 39',
+	phone: '+523334479429',
+	phoneLabel: '+52 33 3447 9429',
 	instagram: 'https://www.instagram.com/accio.hub/',
 	linkedin: 'https://www.linkedin.com/company/accio-inc',
-	whatsapp: '527773635639',
+	whatsapp: '523334479429',
 	city: 'Cuernavaca',
 	region: 'Morelos',
 	regionCode: 'MX-MOR',
